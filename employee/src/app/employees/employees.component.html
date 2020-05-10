@@ -1,0 +1,90 @@
+
+<div class="row">
+  <div class="col s12">
+    <div class="card navy">
+       <div class="card-content">
+          <div class="row">
+           <div class = "col s4">
+            <h2 class = "page-header"> Add contact </h2>
+           <form (submit) = "addnew()" onSubmit="window.location.reload();">
+        <div class = "form-group">
+            <label>Name</label>
+            <input type = "text" [(ngModel)] = "name" name = "name" class = "form-control">
+        </div>
+        <div class = "form-group">
+                <label>position</label>
+                <input type = "text" [(ngModel)] = "position" name = "position" class = "form-control">
+        </div>
+        <div class = "form-group">
+                <label>office</label>
+                <input type = "text" [(ngModel)] = "office" name = "office" class = "form-control" required>
+            </div>
+
+            <div class = "form-group">
+                <label>salary</label>
+                <input type = "text" [(ngModel)] = "salary" name = "salary" class = "form-control" required>
+            </div>
+            <input type= "submit"  class = "btn btn btn-success" value = "Add">
+                        
+                        
+                </form>
+            </div>
+
+          
+
+            
+        <div class = "col s8">
+            <table class="responsive-table highlight">
+                <thead><tr><th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>salary</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let employee of employees">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.position}}</td>
+                    <td>{{employee.office}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td>
+                        <a class="action-btn" (click)="showEditForm(employee)">
+                            <i class = "material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" (click)="deleteEmployee(employee._id)">
+                            <i class = "material-icons">delete</i>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+<form #editForm = "ngForm" (ngSubmit)="editItem(editForm)" onSubmit="window.location.reload();" *ngIf="toggleForm">
+    <h2 class = "page-header"> Edit contact </h2>
+     <div class = "form-group">
+        <label>Name</label>
+        <input type = "text"  [(ngModel)] = "selectedEmployee.name" name = "name" class = "form-control">
+    </div>
+    <div class = "form-group">
+            <label>position</label>
+            <input type = "text" [(ngModel)] = "selectedEmployee.position" name = "position" class = "form-control">
+    </div>
+    <div class = "form-group">
+            <label>office</label>
+            <input type = "text" [(ngModel)] = "selectedEmployee.office" name = "office" class = "form-control" required>
+        </div>
+
+        <div class = "form-group">
+            <label>salary</label>
+            <input type = "text" [(ngModel)] = "selectedEmployee.salary" name = "salary" class = "form-control" required>
+        </div>
+        <input type= "submit"  class = "btn btn btn-success" value = "Save">
+                    
+         </form>
+        
+        
